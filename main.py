@@ -66,13 +66,15 @@ if __name__ == '__main__':
                 'Authorization': 'Basic ' + get_nest_access_token()
             })
 
-            CURRENT_STATUS = NEW_STATUS
-            log.info(f"set status to: {NEW_STATUS} -> {r.status_code}")
+            if r.status_code == 200:
+                CURRENT_STATUS = NEW_STATUS
+                log.info(f"set status to: {NEW_STATUS} ({r.status_code})")
+            else:
+                log.info(f"failed to set nest status: {r.text} ({r.status_code})")
 
         if CURRENT_STATUS == STATUS_HOME:
             sleep_delay = 300  # check less often when home
         else:
             sleep_delay = 15  # check more often when not home
 
-        log.info(f"sleeping for {sleep_delay} seconds")
         time.sleep(sleep_delay)
