@@ -1,7 +1,11 @@
+import logging
 import os
 import time
 
 import requests
+
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
 
 STATUS_HOME = "home"
 STATUS_AWAY = "away"
@@ -36,6 +40,7 @@ def get_hosts():
 
 if __name__ == '__main__':
     HOSTS = get_hosts()
+    log.info(f"found hosts: {HOSTS}")
 
     while True:
         NEW_STATUS = None
@@ -44,7 +49,7 @@ if __name__ == '__main__':
                 requests.get(f"http://{host}", timeout=5)
             except requests.exceptions.ConnectionError as e:
                 if 'Connection refused' in str(e):
-                    print(f"{host} is home")
+                    log.info(f"{host} is home")
                     NEW_STATUS = STATUS_HOME
                     break
                 else:
@@ -59,7 +64,7 @@ if __name__ == '__main__':
             })
 
             CURRENT_STATUS = NEW_STATUS
-            print(f"set status to: {NEW_STATUS} -> {r.status_code}")
+            log.info(f"set status to: {NEW_STATUS} -> {r.status_code}")
 
         if CURRENT_STATUS == STATUS_HOME:
             time.sleep(300)  # check less often when home
