@@ -24,16 +24,15 @@ docker run -d \
   -e NEST_USER="NEST_USER" \
   -e NEST_REST_ENDPOINT="NEST_REST_ENDPOINT" \
   -e HOSTS="HOSTS" \
-  -e TZ="Europe/Romania" \
+  -e TZ="TZ" \
   emilburzo/nest-home-away:latest
 ```
 
 ## Parameters
 
-- NEST_ACCESS_TOKEN, NEST_STRUCTURE and NEST_USER:
+- `NEST_ACCESS_TOKEN`, `NEST_STRUCTURE` and `NEST_USER`:
   see [nest-rest documentation](https://github.com/emilburzo/nest-rest#nest-access-token-and-user-id)
-- NEST_REST_ENDPOINT: the URL where [rest-nest](https://github.com/emilburzo/nest-rest) is running,
+- `NEST_REST_ENDPOINT`: the URL where [rest-nest](https://github.com/emilburzo/nest-rest) is running,
   e.g. `http://192.168.0.4:8467`
-- HOSTS: usually static IPs of mobile devices that the script should check, e.g. `192.168.0.30,192.168.0.31`
-- TZ: [timezone database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), if not set it will default
-  to UTC
+- `HOSTS`: usually static IPs of mobile devices that the script should check, e.g. `192.168.0.30,192.168.0.31`
+- `TZ`: [timezone database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), if not set it will default to UTC; e.g. `Europe/Romania`
