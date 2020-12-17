@@ -67,6 +67,9 @@ if __name__ == '__main__':
             log.info(f"set status to: {NEW_STATUS} -> {r.status_code}")
 
         if CURRENT_STATUS == STATUS_HOME:
-            time.sleep(300)  # check less often when home
+            sleep_delay = 300  # check less often when home
         else:
-            time.sleep(15)  # check more often when not home
+            sleep_delay = 15  # check more often when not home
+
+        log.info(f"sleeping for {sleep_delay} seconds")
+        time.sleep(sleep_delay)
