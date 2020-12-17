@@ -12,5 +12,4 @@ docker run -d --restart=always \
   -e NEST_REST_ENDPOINT="${NEST_REST_ENDPOINT}" \
   -e HOSTS="${HOSTS}" \
   --name ${NAME} \
-  -p ${PORT}:8080 \
   ${IMAGE}
