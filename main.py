@@ -70,7 +70,7 @@ if __name__ == '__main__':
                 CURRENT_STATUS = NEW_STATUS
                 log.info(f"set status to: {NEW_STATUS} ({r.status_code})")
             else:
-                log.info(f"failed to set nest status: {r.text} ({r.status_code})")
+                log.info(f"failed to set nest status: '{r.text}' ({r.status_code})")
 
         if CURRENT_STATUS == STATUS_HOME:
             sleep_delay = 300  # check less often when home
