@@ -26,8 +26,12 @@ def get_nest_rest_endpoint():
     return os.environ.get("NEST_REST_ENDPOINT")
 
 
+def get_hosts_separator():
+    return os.environ.get("HOSTS_SEPARATOR", ",")
+
+
 def get_hosts():
-    return os.environ.get("HOSTS").split(",")
+    return os.environ.get("HOSTS").split(get_hosts_separator())
 
 
 if __name__ == '__main__':
