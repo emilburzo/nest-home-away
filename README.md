@@ -11,6 +11,7 @@ If no hosts are connected, the status will be set to `away`.
 ## Requirements
 
 - [nest-rest](https://github.com/emilburzo/nest-rest) already setup and running
+- static IPs set in your DHCP server (usually your router) for all the relevant phones
 
 ## Docker
 
