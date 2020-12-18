@@ -19,7 +19,7 @@ The easiest way is to run it via Docker:
 
 ```bash
 docker run -d \
---name nest-home-away \
+  --name nest-home-away \
   -e NEST_ACCESS_TOKEN="NEST_ACCESS_TOKEN" \
   -e NEST_STRUCTURE="NEST_STRUCTURE" \
   -e NEST_USER="NEST_USER" \
