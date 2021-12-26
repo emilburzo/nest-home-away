@@ -39,3 +39,4 @@ docker run -d \
 - `TZ`: [timezone database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), if not set it will default to UTC; e.g. `Europe/Romania`
 - `WEBHOOK_OK_URL` (optional): URL to call when the home/away status was successfully set; intended for use with ping style monitoring, e.g. https://healthchecks.io/
 - `WEBHOOK_FAIL_URL` (optional): URL to call when the home/away status could not be set
+- `LOG_LEVEL` (optional): set the [logging level](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), defaults to `INFO`

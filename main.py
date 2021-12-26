@@ -4,9 +4,11 @@ import time
 
 import requests
 
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
+
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
-    level=logging.INFO,
+    level=logging.getLevelName(LOG_LEVEL),
     datefmt='%Y-%m-%d %H:%M:%S')
 log = logging.getLogger(__name__)
 
