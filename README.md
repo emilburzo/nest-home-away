@@ -37,3 +37,5 @@ docker run -d \
   e.g. `http://192.168.0.4:8467`
 - `HOSTS`: usually static IPs of mobile devices that the script should check, e.g. `192.168.0.30,192.168.0.31`
 - `TZ`: [timezone database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), if not set it will default to UTC; e.g. `Europe/Romania`
+- `WEBHOOK_OK_URL` (optional): URL to call when the home/away status was successfully set; intended for use with ping style monitoring, e.g. https://healthchecks.io/
+- `WEBHOOK_FAIL_URL` (optional): URL to call when the home/away status could not be set

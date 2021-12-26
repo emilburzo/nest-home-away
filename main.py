@@ -41,6 +41,34 @@ def get_hosts():
     return os.environ.get("HOSTS").split(get_hosts_separator())
 
 
+def get_webhook_ok_url():
+    return os.environ.get("WEBHOOK_OK_URL")
+
+
+def get_webhook_fail_url():
+    return os.environ.get("WEBHOOK_FAIL_URL")
+
+
+def ping_webhook_url(url: str):
+    if url:
+        log.debug(f"calling webhook url: {url}")
+        requests.get(url, timeout=5)
+    else:
+        log.debug("not calling webhook because URL is not set")
+
+
+def on_success():
+    log.info(f"set nest status to: {NEW_STATUS} ({r.status_code})")
+
+    ping_webhook_url(get_webhook_ok_url())
+
+
+def on_failure():
+    log.info(f"failed to set nest status: '{r.text}' ({r.status_code})")
+
+    ping_webhook_url(get_webhook_fail_url())
+
+
 if __name__ == '__main__':
     HOSTS = get_hosts()
     log.info(f"found hosts: {HOSTS}")
@@ -68,9 +96,9 @@ if __name__ == '__main__':
 
             if r.status_code == 200:
                 CURRENT_STATUS = NEW_STATUS
-                log.info(f"set status to: {NEW_STATUS} ({r.status_code})")
+                on_success()
             else:
-                log.info(f"failed to set nest status: '{r.text}' ({r.status_code})")
+                on_failure()
 
         if CURRENT_STATUS == STATUS_HOME:
             sleep_delay = 300  # check less often when home
