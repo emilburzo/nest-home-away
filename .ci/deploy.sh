@@ -11,6 +11,7 @@ docker run -d --restart=always \
   -e NEST_USER="${NEST_USER}" \
   -e NEST_REST_ENDPOINT="${NEST_REST_ENDPOINT}" \
   -e HOSTS="${HOSTS}" \
+  -e WEBHOOK_OK_URL="${WEBHOOK_OK_URL}" \
   -e TZ="${TZ}" \
   --name ${NAME} \
   ${IMAGE}
