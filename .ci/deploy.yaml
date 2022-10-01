@@ -24,6 +24,8 @@ spec:
               value: "192.168.0.30,192.168.0.31"
             - name: NEST_REST_ENDPOINT
               value: "http://192.168.0.4:8467"
+            - name: LOG_LEVEL
+              value: "INFO"
             - name: GOOGLE_REFRESH_TOKEN
               valueFrom:
                 secretKeyRef:
