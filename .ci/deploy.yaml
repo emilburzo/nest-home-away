@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nest-home-away
+  labels:
+    app: nest-home-away
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nest-home-away
+  template:
+    metadata:
+      labels:
+        app: nest-home-away
+    spec:
+      containers:
+        - name: nest-home-away
+          image: emilburzo/nest-home-away:latest
+          env:
+            - name: TZ
+              value: "Europe/Bucharest"
+            - name: HOSTS
+              value: "192.168.0.30,192.168.0.31"
+            - name: NEST_REST_ENDPOINT
+              value: "http://192.168.0.4:8467"
+            - name: GOOGLE_REFRESH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: nest-home-away.db
+                  key: google_refresh_token
+                  optional: false
+            - name: NEST_STRUCTURE
+              valueFrom:
+                secretKeyRef:
+                  name: nest-home-away.db
+                  key: nest_structure
+                  optional: false
+            - name: NEST_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nest-home-away.db
+                  key: nest_user
+                  optional: false
+            - name: WEBHOOK_OK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nest-home-away.db
+                  key: webhook_ok_url
+                  optional: false
