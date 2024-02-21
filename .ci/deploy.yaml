@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nest-home-away
-          image: emilburzo/nest-home-away:latest
+          image: emilburzo/nest-home-away:SHORT_SHA
           env:
             - name: TZ
               value: "Europe/Bucharest"
